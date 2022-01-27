@@ -1,1 +1,2 @@
-# TaskManager
+# TaskManager (still under construction)
+This a project to create the algorithm of a task manager using MongoDB. The goal is to learn the basics of MongoDB and create a personal tool to keep track and manage different task by being able to call MongoDB Java Driver to operate different function such as delete, add, modify or view tasks. If you want to use this tool you will need MongoDB java driver I am currenty using the version 3.12.10 and JDK version 17.
