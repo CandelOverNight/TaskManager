@@ -1,7 +1,9 @@
 import static com.mongodb.client.model.Filters.eq;
 
+import SecretFile.java.SecretFile;
 import com.mongodb.client.*;
 import org.bson.Document;
+
 
 import java.util.Scanner;
 
@@ -81,7 +83,7 @@ public class Main {
     public static String Find() {
         // Replace the uri string with your MongoDB deployment's connection string
         System.out.println("Which database do you want to access to ?");
-        try (MongoClient mongoClient = MongoClients.create(SecretFile.uri)) {
+        try (MongoClient mongoClient = MongoClients.create(SecretFile.getUri())) {
             MongoDatabase database = mongoClient.getDatabase("sample");
             MongoCollection<Document> collection = database.getCollection("movies");
             Document doc = collection.find().first();
@@ -104,7 +106,7 @@ public class Main {
         char listType = scanner.nextLine().toUpperCase().charAt(0);
         scanner.close();
         if (listType == 'D') {
-            try (MongoClient mongoClient = MongoClients.create(uri)) {
+            try (MongoClient mongoClient = MongoClients.create(SecretFile.getUri())) {
                 MongoDatabase database = mongoClient.getDatabase("sample_mflix");
                 MongoIterable<String> list = database.listCollectionNames();
                 for (String name : list
